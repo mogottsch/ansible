@@ -1,9 +1,11 @@
- - hosts: localhost
-   vars:
-     var1: value1
-     var2: value2
-   tasks:
-     - debug:
-         msg: "{{ var1 }}"
-     - debug:
-         msg: "{{ var2 }}"
+- hosts: localhost
+  tasks:
+    - name: Install yay
+      become: true
+      community.general.pacman:
+        name: yay
+      tags:
+        - zsh
+        - core
+    - include_tasks: tasks/setup-zsh.yml
+    - include_tasks: tasks/install-main.yml

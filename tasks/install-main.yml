@@ -1,0 +1,14 @@
+- name: Install main packages
+  community.general.pacman:
+    executable: yay
+    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    name:
+      - google-chrome
+      - oh-my-zsh
+      - ranger
+      - rofi
+      - tmux
+      - visual-studio-code-bin
+      - vim
+  tags:
+    - core

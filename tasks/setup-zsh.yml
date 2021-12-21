@@ -1,0 +1,28 @@
+- name: Install ZSH
+  become: true
+  community.general.pacman:
+    name: zsh
+  tags:
+    - zsh
+
+- name: Change user shell to zsh
+  become: yes
+  user:
+    name: "moritz"
+    shell: /usr/bin/zsh
+  tags:
+    - zsh
+
+- name: Install zsh plugins
+  community.general.pacman:
+    executable: yay
+    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    name:
+      - zsh-vi-mode
+      - zsh-theme-powerlevel10k-git
+      - zsh-autosuggestions
+      - zsh-completions
+      - zsh-syntax-highlighting
+      - zsh-history-substring-search
+  tags:
+    - zsh
