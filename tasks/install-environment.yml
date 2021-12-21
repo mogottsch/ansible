@@ -1,0 +1,22 @@
+- name: Install environment packages
+  community.general.pacman:
+    executable: yay
+    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    name:
+      - arandr
+      - bat
+      - blueman
+      - copyq
+      - discord
+      - flameshot
+      - gparted
+      - pandoc
+      - redshift
+      - spotify
+      - tldr
+      - udiskie
+      - vlc
+      - zaread-git
+      - zathura
+  tags:
+    - environment

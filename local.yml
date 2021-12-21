@@ -1,11 +1,13 @@
 - hosts: localhost
-  tasks:
+  pre_tasks:
     - name: Install yay
       become: true
       community.general.pacman:
         name: yay
-      tags:
-        - zsh
-        - core
+  tasks:
+    - include_tasks: tasks/setup-git.yml
     - include_tasks: tasks/setup-zsh.yml
     - include_tasks: tasks/install-main.yml
+    - include_tasks: tasks/install-environment.yml
+    - include_tasks: tasks/install-dev.yml
+    - include_tasks: tasks/install-uni.yml

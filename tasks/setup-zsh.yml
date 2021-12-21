@@ -18,11 +18,12 @@
     executable: yay
     extra_args: --builddir /home/moritz/.cache/yay --batchinstall
     name:
-      - zsh-vi-mode
-      - zsh-theme-powerlevel10k-git
+      - conda-zsh-completion
       - zsh-autosuggestions
       - zsh-completions
-      - zsh-syntax-highlighting
       - zsh-history-substring-search
+      - zsh-syntax-highlighting
+      - zsh-theme-powerlevel10k-git
+      - zsh-vi-mode
   tags:
     - zsh

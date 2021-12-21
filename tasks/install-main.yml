@@ -8,7 +8,6 @@
       - ranger
       - rofi
       - tmux
-      - visual-studio-code-bin
-      - vim
+      - gvim # gvim enables +clipboard
   tags:
-    - core
+    - main
