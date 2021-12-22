@@ -1,7 +1,7 @@
 - name: Install development packages
   community.general.pacman:
     executable: yay
-    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    extra_args: "--builddir {{ lookup('env', 'HOME') }}/.cache/yay --batchinstall"
     name:
       # - cuda
       - docker

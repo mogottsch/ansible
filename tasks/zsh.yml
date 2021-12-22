@@ -8,7 +8,7 @@
 - name: Change user shell to zsh
   become: yes
   user:
-    name: "moritz"
+    name: "{{ lookup('env', 'USER') }}"
     shell: /usr/bin/zsh
   tags:
     - zsh
@@ -16,7 +16,7 @@
 - name: Install zsh plugins
   community.general.pacman:
     executable: yay
-    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    extra_args: "--builddir {{ lookup('env', 'HOME') }}/.cache/yay --batchinstall"
     name:
       - conda-zsh-completion
       - zsh-autosuggestions

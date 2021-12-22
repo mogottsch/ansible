@@ -6,7 +6,7 @@ RUN echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 RUN useradd -m moritz -G wheel
 USER moritz
 
-WORKDIR /home/moritz
+WORKDIR /home/moritz/ansible
 
-COPY . .
+COPY --chown=moritz . . 
 CMD ["ansible-playbook", "local.yml"]

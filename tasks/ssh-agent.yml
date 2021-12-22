@@ -1,9 +1,9 @@
 - name: Enable systemd ssh-agent service
-  become_user: moritz
+  become_user: "{{ lookup('env', 'USER') }}"
   shell:
     cmd: systemctl enable ssh-agent.service --user
 
 - name: start systemd ssh-agent service
-  become_user: moritz
+  become_user: "{{ lookup('env', 'USER') }}"
   shell:
     cmd: systemctl start ssh-agent.service --user

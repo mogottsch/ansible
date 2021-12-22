@@ -4,11 +4,16 @@
       become: true
       community.general.pacman:
         name: yay
+  vars:
+    source_key: "{{ playbook_dir }}/.ssh/id_ed25519"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   tasks:
-    - include_tasks: tasks/setup-git.yml
-    - include_tasks: tasks/setup-zsh.yml
-    - include_tasks: tasks/install-main.yml
-    - include_tasks: tasks/install-environment.yml
-    - include_tasks: tasks/install-dev.yml
-    - include_tasks: tasks/install-uni.yml
-    - include_tasks: tasks/setup-ssh-agent.yml
+    - include_tasks: tasks/ssh-keys.yml
+    - include_tasks: tasks/git.yml
+    - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/main.yml
+    - include_tasks: tasks/environment.yml
+    - include_tasks: tasks/dev.yml
+    - include_tasks: tasks/uni.yml
+    - include_tasks: tasks/dotfiles.yml
+    - include_tasks: tasks/ssh-agent.yml
