@@ -11,3 +11,4 @@
     - include_tasks: tasks/install-environment.yml
     - include_tasks: tasks/install-dev.yml
     - include_tasks: tasks/install-uni.yml
+    - include_tasks: tasks/setup-ssh-agent.yml
