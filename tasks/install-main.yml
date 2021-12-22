@@ -8,6 +8,6 @@
       - ranger
       - rofi
       - tmux
-      - gvim # gvim enables +clipboard
   tags:
     - main
+- include_tasks: tasks/install-vim.yml

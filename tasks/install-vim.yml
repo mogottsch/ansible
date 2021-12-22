@@ -1,0 +1,17 @@
+- name: Install vim
+  community.general.pacman:
+    executable: yay
+    extra_args: --builddir /home/moritz/.cache/yay --batchinstall
+    name:
+      - gvim # gvim enables +clipboard
+  tags:
+    - main
+- name: Install vundle
+  become_user: moritz
+  ansible.builtin.git:
+    dest: ~/.vim/bundle/Vundle.vim
+    repo: https://github.com/VundleVim/Vundle.vim.git
+- name: Install vundle plugins
+  become_user: moritz
+  ansible.builtin.shell:
+    cmd: vim +PluginInstall +qall
