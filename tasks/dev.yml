@@ -11,5 +11,6 @@
       - nginx
       - ngrok
       - visual-studio-code-bin
+      - diff-so-fancy
   tags:
     - dev
