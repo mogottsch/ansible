@@ -12,5 +12,6 @@
       - ngrok
       - visual-studio-code-bin
       - diff-so-fancy
+      - lua-language-server-git
   tags:
     - dev
