@@ -1,0 +1,12 @@
+- name: Ensure ~/dev/privat exists
+  file:
+    path: ~/dev/privat
+    state: directory
+- name: Cloning static-server
+  ansible.builtin.git:
+    repo: "https://github.com/mogottsch/static-server"
+    dest: "{{ lookup('env', 'HOME') }}/dev/privat/static-server"
+- name: Cloning wallpaper crawler
+  ansible.builtin.git:
+    repo: "https://github.com/mogottsch/wallpaper-crawler"
+    dest: "{{ lookup('env', 'HOME') }}/dev/privat/wallpaper-crawler"

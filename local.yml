@@ -10,10 +10,7 @@
   tasks:
     - include_tasks: tasks/ssh-keys.yml
     - include_tasks: tasks/git.yml
-    - include_tasks: tasks/zsh.yml
-    - include_tasks: tasks/main.yml
-    - include_tasks: tasks/environment.yml
-    - include_tasks: tasks/dev.yml
-    - include_tasks: tasks/uni.yml
     - include_tasks: tasks/dotfiles.yml
-    - include_tasks: tasks/ssh-agent.yml
+    # - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/cron.yml
+    - include_tasks: tasks/projects.yml

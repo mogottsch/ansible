@@ -1,9 +1,0 @@
-- name: Install tmux
-  community.general.pacman:
-    executable: yay
-    extra_args: "--builddir {{ lookup('env', 'HOME') }}/.cache/yay --batchinstall"
-    name:
-      - tmux
-      - tmux-plugin-manager
-  tags:
-    - tmux

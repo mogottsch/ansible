@@ -1,0 +1,7 @@
+- name: Install cronie with pacman
+  become: true
+  ansible.builtin.pacman:
+    name: cronie
+
+- name: Setup cronfile
+  command: crontab ~/dotfiles/cron/cronfile
