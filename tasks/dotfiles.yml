@@ -8,3 +8,7 @@
     dest: "{{ lookup('env', 'HOME') }}/dotfiles"
 - name: Stow dotfiles
   shell: cd $HOME/dotfiles && ./install
+- name: Create emtpy .secrets in home directory
+  ansible.builtin.file:
+    path: "{{ lookup('env', 'HOME') }}/.secrets"
+    state: touch
