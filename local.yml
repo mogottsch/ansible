@@ -7,6 +7,8 @@
   vars:
     source_key: "{{ playbook_dir }}/.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
+    source_secrets: "{{ playbook_dir }}/.secrets"
+    dest_secrets: "{{ lookup('env', 'HOME') }}/.secrets"
   tasks:
     - include_tasks: tasks/ssh-keys.yml
     - include_tasks: tasks/git.yml
