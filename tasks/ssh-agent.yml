@@ -1,3 +1,8 @@
+- name: Create user scoped systemd service dir if not exists
+  become_user: "{{ lookup('env', 'USER') }}"
+  file:
+    path: /home/{{ lookup('env', 'USER') }}/.config/systemd/user
+    state: directory
 - name: Install ssh agent service
   become_user: "{{ lookup('env', 'USER') }}"
   copy:
