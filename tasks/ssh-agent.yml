@@ -1,3 +1,9 @@
+- name: Install ssh agent service
+  become_user: "{{ lookup('env', 'USER') }}"
+  copy:
+    src: ../templates/ssh-agent.service
+    dest: /home/{{ lookup('env', 'USER') }}/.config/systemd/user/ssh-agent.service
+
 - name: Enable systemd ssh-agent service
   become_user: "{{ lookup('env', 'USER') }}"
   shell:
