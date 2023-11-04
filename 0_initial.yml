@@ -1,0 +1,15 @@
+- hosts: localhost
+  pre_tasks:
+    - name: Install yay
+      become: true
+      community.general.pacman:
+        name: yay
+  vars:
+    source_key: "{{ playbook_dir }}/.ssh/id_ed25519"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
+  tasks:
+    - include_tasks: tasks/beep.yml
+    - include_tasks: tasks/ssh-keys.yml
+    - include_tasks: tasks/ssh-agent.yml
+    - include_tasks: tasks/git.yml
+    - include_tasks: tasks/disable-ipv6.yml

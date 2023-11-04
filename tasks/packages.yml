@@ -1,2 +1,0 @@
-- name: Install all packages
-  command: ~/dotfiles/pacman/install.sh

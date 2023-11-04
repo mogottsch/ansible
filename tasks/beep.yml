@@ -1,0 +1,13 @@
+- name: Remove pcspkr module
+  become: true
+  ansible.builtin.modprobe:
+    name: pcspkr
+    state: absent
+- name: Ensure pcspkr module is blacklisted
+  become: true
+  ansible.builtin.copy:
+    dest: /etc/modprobe.d/nobeep.conf
+    content: "blacklist pcspkr"
+    owner: root
+    group: root
+    mode: '0644'

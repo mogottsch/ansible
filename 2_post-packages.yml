@@ -1,0 +1,10 @@
+- hosts: localhost
+  vars:
+    source_secrets: "{{ playbook_dir }}/.secrets"
+    dest_secrets: "{{ lookup('env', 'HOME') }}/.secrets"
+  tasks:
+    - include_tasks: tasks/change-shell.yml
+    - include_tasks: tasks/nvim.yml
+    - include_tasks: tasks/cron.yml
+    - include_tasks: tasks/projects.yml
+    - include_tasks: tasks/secrets.yml

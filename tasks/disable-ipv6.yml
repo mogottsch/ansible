@@ -1,0 +1,10 @@
+- name: Get active WiFi/Ethernet connections
+  shell: "nmcli --terse --fields TYPE,NAME connection show --active | awk -F: '$1 ~ /^(802-11-wireless|ethernet)$/{print $2}'"
+  register: active_connections
+
+- name: Disable IPv6 for active connections
+  shell: nmcli connection modify "{{ item }}" ipv6.method "disabled"
+  with_items: "{{ active_connections.stdout_lines }}"
+  loop_control:
+    label: "{{ item }}"
+  when: active_connections.stdout_lines is defined and active_connections.stdout_lines | length > 0
