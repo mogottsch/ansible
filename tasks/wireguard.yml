@@ -1,0 +1,16 @@
+- name: Ensure wireguard config directory exists
+  become: true
+  file:
+    dest: "/etc/wireguard"
+    mode: 0700
+    state: directory
+    owner: root
+    group: root
+- name: Install wireguard config
+  become: true
+  copy:
+    src: "{{ wireguard_source_dir }}/"
+    dest: "/etc/wireguard"
+    mode: 0600
+    owner: root
+    group: root
