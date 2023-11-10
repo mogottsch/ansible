@@ -1,0 +1,21 @@
+- name: Ensure ControllerMode is set to bredr in /etc/bluetooth/main.conf
+  become: true
+  block:
+    - name: Check if ControllerMode is set
+      shell: grep -q '^ControllerMode' /etc/bluetooth/main.conf
+      register: controller_mode_check
+      failed_when: false
+      changed_when: false
+
+    - name: Replace existing ControllerMode setting in /etc/bluetooth/main.conf
+      become: true
+      lineinfile:
+        path: /etc/bluetooth/main.conf
+        regexp: '^ControllerMode[ ]*=.*'
+        line: 'ControllerMode = bredr'
+      when: controller_mode_check.rc == 0
+
+    - name: Insert ControllerMode as second line
+      shell: |
+        awk 'NR==1{print;print "ControllerMode = bredr";next} /^ControllerMode/ {next} 1' /etc/bluetooth/main.conf > /tmp/main.conf && mv /tmp/main.conf /etc/bluetooth/main.conf
+      when: controller_mode_check.rc != 0

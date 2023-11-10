@@ -13,5 +13,6 @@
     - include_tasks: tasks/ssh-keys.yml
     - include_tasks: tasks/ssh-agent.yml
     - include_tasks: tasks/wireguard.yml
+    - include_tasks: tasks/bluetooth.yml
     - include_tasks: tasks/git.yml
     - include_tasks: tasks/disable-ipv6.yml
