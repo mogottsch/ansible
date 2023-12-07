@@ -1,0 +1,10 @@
+- name: Enable systemd geoclue-agent service
+  become_user: "{{ lookup('env', 'USER') }}"
+  shell:
+    cmd: systemctl enable geoclue-agent.service --user
+
+- name: start systemd geoclue-agent service
+  become_user: "{{ lookup('env', 'USER') }}"
+  shell:
+    cmd: systemctl start geoclue-agent.service --user
+
